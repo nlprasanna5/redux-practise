@@ -1,14 +1,82 @@
+import { useSelector, useDispatch } from "react-redux";
+import { addUser, deleteUser, updateUsername } from "./features/Users";
+import { useState } from "react";
 import "./App.css";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
-import ChangeColor from "./components/ChangeColor";
 
 function App() {
+  const dispatch = useDispatch();
+  const userList = useSelector((state) => state.users.value);
+
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [newUsername, setNewUsername] = useState("");
+
+  // const id = 0;
+
   return (
     <div className="App">
-      <Profile />
-      <Login />
-      <ChangeColor />
+      <div className="addUser">
+        <input
+          type="text"
+          placeholder="Name..."
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Username..."
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            dispatch(
+              addUser({
+                id: userList.length+1,
+                name: name,
+                username: username
+              })
+            );
+          }}
+        >
+          Add User
+        </button>
+      </div>
+      <div className="displayUsers">
+        {userList.map((user) => {
+          return (
+            <div key={user.id}>
+              <h1>{user.name}</h1>
+              <h1>{user.username}</h1>
+              <input
+                type="text"
+                placeholder="New username..."
+                onChange={(event) => {
+                  setNewUsername(event.target.value);
+                }}
+              />
+              <button
+                onClick={() => {
+                  dispatch(
+                    updateUsername({ id: user.id, username: newUsername })
+                  );
+                }}
+              >
+                Update Username
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(deleteUser({ id: user.id }));
+                }}
+              >
+                Delete User
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
