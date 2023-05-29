@@ -1,20 +1,21 @@
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import React, { createContext,useState } from "react";
+import ComponentA from "./ComponentA";
+import ComponentB from "./ComponentB";
 
-import { increment,decrement,reset } from "./features/Count";
-
+export const store = createContext();
 
 function App() {
-  const dispatch = useDispatch();
-  const countValue = useSelector((state) => state.count);
+    const [data,setData] = useState(0);
 
   return (
-    <div className="App">
-      <h4>count: {countValue}</h4>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
-      <button onClick={() => dispatch(reset())}>Reset</button>
-    </div>
+    <store.Provider value={[data,setData]}>
+    <center>
+      <ComponentA/>
+      <ComponentB/>
+      <button onClick={()=> setData(data+1)}>Increment</button>
+    </center>
+    </store.Provider>
   );
 }
 
