@@ -1,20 +1,29 @@
 import "./App.css";
 import React, { createContext,useState } from "react";
-import ComponentA from "./ComponentA";
-import ComponentB from "./ComponentB";
+import Count from "./Count";
+import Display from "./Display";
 
 export const store = createContext();
 
 function App() {
-    const [data,setData] = useState(0);
+    const [data,setData] = useState([
+      {
+        brandname:'Nokia'
+      },
+      {
+        brandname:'Realme'
+      },
+      {
+        brandname:'Mi'
+      }
+    ]);
 
   return (
     <store.Provider value={[data,setData]}>
-    <center>
-      <ComponentA/>
-      <ComponentB/>
-      <button onClick={()=> setData(data+1)}>Increment</button>
-    </center>
+      <center>
+        <Count/>
+        <Display/>
+      </center>
     </store.Provider>
   );
 }
