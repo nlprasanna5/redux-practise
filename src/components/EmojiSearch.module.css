@@ -1,0 +1,65 @@
+.emojiSearchApp {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .emojiSearchApp h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .emojiSearchApp input {
+    padding: 1rem;
+    font-size: 1rem;
+    width: 20rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .emojiDropdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .emojiItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    width: 10rem;
+    cursor: pointer;
+  }
+  
+  .emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .name {
+    font-size: 0.875rem;
+  }
+  
+  .selectedEmoji {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .selectedEmoji .emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .selectedEmoji .name {
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+  
